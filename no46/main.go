@@ -1,0 +1,14 @@
+package main
+
+import "fmt"
+
+func main() {
+	var a, b int
+	fmt.Scanln(&a, &b)
+
+	if b%a == 0 {
+		fmt.Println(b / a)
+	} else {
+		fmt.Println(b/a + 1)
+	}
+}
