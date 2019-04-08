@@ -2,26 +2,27 @@ package main
 
 import "fmt"
 
-var pattern int
-var limit int
-
 func main() {
-	fmt.Scanln(&limit)
+	/**
+	周期性が存在する。
+	nが持ちうるパターンは n(通り) = (n-1通り) + (n-2通り)
 
-	stepCount(0)
+	n = 1 {1} 1通り
+	n = 2 {1, 1} {2} 2通り
+	n = 3 {1, 1, 1}{1, 2}{2, 1} 3通り
+	n = 4 {1, 1, 1, 1}{1, 1, 2}{1, 2, 1}{2, 1, 1}{2, 2} 5通り
+	n = 5 {...}... 8通り
 
-	fmt.Println(pattern)
-}
+	*/
+	var n int
+	fmt.Scanln(&n)
 
-func stepCount(total int) {
-	if limit == total {
-		pattern++
-		return
+	np, np1, np2 := 0, 1, 0
+	for i := 0; i < n; i++ {
+		np = np2 + np1
+		np2 = np1
+		np1 = np
 	}
-	if limit < total {
-		return
-	}
 
-	stepCount(total + 1)
-	stepCount(total + 2)
+	fmt.Println(np)
 }
